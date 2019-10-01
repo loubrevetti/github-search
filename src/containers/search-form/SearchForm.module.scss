@@ -1,0 +1,19 @@
+.searchForm {
+  display: block;
+  .forked{
+    h5{
+      display: inline-block;
+    }
+  }
+  :global {
+    .ant-row,
+    .ant-row-flex {
+      &:first-child{
+        padding:2em 0em;
+      }
+    }
+    .ant-col {
+        text-align: left;
+    }
+  }
+}

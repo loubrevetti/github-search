@@ -1,0 +1,36 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-react",
+    "tslint-plugin-prettier"
+  ],
+  "linterOptions": {
+    "exclude": ["config/**/*.js", "node_modules/*", "public/*"]
+  },
+  "jsRules": {},
+  "rules": {
+    "prettier": [true, ".prettierrc.json"],
+    "quotemark": [true, "double", "jsx-double"],
+    "indent": [true, "spaces", 2],
+    "no-console": [false],
+    "import-name": [false],
+    "variable-name": [true, "allow-pascal-case"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "no-trailing-whitespace": [true,"ignore-blank-lines"],
+    "max-line-length":[true, 120],
+    "ter-arrow-parens":[true, "as-needed"],
+    "align":[true,"members","parameters", "statements","elements"],
+    "ordered-imports":[false],
+    "prefer-template":[true, "allow-single-concat"]
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["bin", "src/serviceWorker.ts"]
+  }
+}

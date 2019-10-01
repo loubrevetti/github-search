@@ -1,0 +1,13 @@
+.feedItem {
+  border:1px solid #aaa;
+  .primary{
+    padding-left:1em;
+    border-right: 1px solid #aaa;
+  }
+  .tertiary{
+    border-left: 1px solid #aaa;
+  }
+  .primary,.secondary,.tertiary{
+
+  }
+}

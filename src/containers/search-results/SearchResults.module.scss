@@ -1,0 +1,43 @@
+.searchResultTitle {
+  padding: 2em 0em;
+  margin: 2em 0em;
+  border-top: 1px solid #aaa;
+}
+.searchResults {
+  display: block;
+  :global {
+    .ant-list-item {
+      display: block;
+      border: 0px;
+    }
+  }
+  .repoMain {
+    :global {
+      .ant-col {
+        text-align: left;
+        padding: 1em;
+      }
+      a {
+        font-weight: bold;
+      }
+      span {
+        font-size: 0.9em;
+      }
+    }
+  }
+  .repoStars,
+  .repoLicense {
+    position: relative;
+    top: 50%;
+    transform: translate(0px, -50%);
+    span {
+      padding: 0.5em 1em;
+      text-align: center;
+      display: block;
+      font-size: 0.75em;
+      &:last-child {
+        font-weight: bold;
+      }
+    }
+  }
+}
