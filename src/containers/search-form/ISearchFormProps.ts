@@ -1,3 +1,3 @@
 export interface ISearchFormProps {
-  someProp?: string;
+  emitSearchSubmit(isEnabled: boolean): void;
 }

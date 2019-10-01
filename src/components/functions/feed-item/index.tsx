@@ -11,17 +11,13 @@ const FeedItem: FunctionComponent<IFeedItemProps> = props => {
         const item = props.components.get(feedType as feedTypes);
         const size: number = feedType === feedTypes.primary ? 16 : 4;
         return (
-          <Col key={feedType} className={styles[feedType]} span={size}>
+          <Col key={feedType} className={styles[feedType]} lg={size}>
             {item}
           </Col>
         );
       });
   };
-  return (
-    <Row type="flex" className={styles.feedItem}>
-      {renderFeedItems()}
-    </Row>
-  );
+  return <Row className={styles.feedItem}>{renderFeedItems()}</Row>;
 };
 
 export default FeedItem;

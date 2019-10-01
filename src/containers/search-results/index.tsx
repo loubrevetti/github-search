@@ -4,7 +4,7 @@ import { IAppState } from "../../state/types";
 import { ISearchResultsDispatchProps } from "./ISearchResultsDispatch";
 import { ISearchResultsProps } from "./ISearchResultsProps";
 import { ISearchResultsStateProps } from "./ISearchResultsState";
-import { List, Row, Col } from "antd";
+import { List, Row, Col, Tag } from "antd";
 import { IRepo } from "../../state/search-store/types";
 import FeedItem from "../../components/functions/feed-item";
 import { feedTypes } from "../../components/functions/feed-item/IFeedItemProps";
@@ -23,13 +23,14 @@ class SearchResults extends Component<propsType, IAppState> {
   }
 
   public render() {
-    if (!this.props.searchStore) return null;
+    if (!this.props.searchStore && !this.props.searchExecuted) return null;
     return (
       <React.Fragment>
         <h3 className={styles.searchResultTitle}>{process.env.REACT_APP_SEARCH_RESULTS_TITLE}</h3>
         <List
           className={styles.searchResults}
-          dataSource={this.props.searchStore.repos}
+          loading={{ tip: "Loading...", spinning: this.props.searchExecuted && !this.props.searchStore }}
+          dataSource={this.props.searchStore ? this.props.searchStore.repos : []}
           renderItem={(repo: IRepo) => (
             <List.Item key={repo.id}>
               <FeedItem components={this.createFeedComponents(repo)} />
@@ -68,7 +69,7 @@ class SearchResults extends Component<propsType, IAppState> {
             {repo.full_name}
           </a>
         </Col>
-        <Col></Col>
+        {this.renderForkedBadge(repo)}
       </Row>
       <Row type="flex" justify="space-between" align="middle" gutter={64}>
         <Col>
@@ -77,6 +78,12 @@ class SearchResults extends Component<propsType, IAppState> {
       </Row>
     </div>
   );
+  private renderForkedBadge = (repo: IRepo): JSX.Element | null =>
+    repo.fork ? (
+      <Col>
+        <Tag color="#108ee9">FORKED</Tag>
+      </Col>
+    ) : null;
   private getLicense = (repo: IRepo): JSX.Element =>
     !repo.license ? <span>{process.env.REACT_APP_NO_FEED_DATA}</span> : <span>{repo.license.name}</span>;
 }

@@ -1,13 +1,33 @@
 .feedItem {
-  border:1px solid #aaa;
-  .primary{
-    padding-left:1em;
+  border: 1px solid #aaa;
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  .primary {
+    padding-left: 1em;
     border-right: 1px solid #aaa;
   }
-  .tertiary{
+  .tertiary {
     border-left: 1px solid #aaa;
   }
-  .primary,.secondary,.tertiary{
+  .primary,
+  .secondary,
+  .tertiary {
+  }
+}
 
+@media (max-width: 992px) {
+  .feedItem {
+    display: block;
+    .tertiary {
+      text-align: left;
+      border-left: 0px;
+      border-top: 1px solid #aaa;
+    }
+    .primary {
+      text-align: left;
+      border-right: 0px;
+      border-bottom: 1px solid #aaa;
+    }
   }
 }

@@ -43,8 +43,8 @@ class SearchForm extends Component<propsType, IAppState> {
             <h1>{process.env.REACT_APP_SEARCH_TITLE}</h1>
           </Row>
 
-          <Row type="flex" justify="space-around" align="middle" gutter={64}>
-            <Col span={12}>
+          <Row gutter={64}>
+            <Col lg={12}>
               <h5>{process.env.REACT_APP_SEARCH_LABEL}</h5>
               <Form.Item hasFeedback>
                 {this.validateField("text", <Input />, {
@@ -52,7 +52,7 @@ class SearchForm extends Component<propsType, IAppState> {
                 })}
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col lg={12}>
               <h5>{process.env.REACT_APP_SEARCH_STARS_LABEL}</h5>
               <Form.Item hasFeedback>
                 {this.validateField("stars", <Input addonBefore={this.starComparison()} />, {
@@ -66,8 +66,8 @@ class SearchForm extends Component<propsType, IAppState> {
             </Col>
           </Row>
 
-          <Row type="flex" justify="space-around" align="middle" gutter={64}>
-            <Col span={12}>
+          <Row gutter={64}>
+            <Col lg={12}>
               <h5>{process.env.REACT_APP_SEARCH_LICENSE_LABEL}</h5>
               <Form.Item hasFeedback>
                 {this.validateField(
@@ -77,9 +77,8 @@ class SearchForm extends Component<propsType, IAppState> {
                   </Select>,
                 )}
               </Form.Item>
-              ,
             </Col>
-            <Col span={12} className={styles.forked}>
+            <Col lg={12} className={styles.forked}>
               <Form.Item>
                 {this.validateField(
                   "forked",
@@ -137,6 +136,7 @@ class SearchForm extends Component<propsType, IAppState> {
 
   public handleSubmit = (e: any): void => {
     e.preventDefault();
+    this.props.emitSearchSubmit(true);
     this.props.form.validateFields((err: any) => {
       if (!err) {
         let searchObject: ISearchStoreFetchParams = {
