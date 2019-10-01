@@ -2,9 +2,9 @@ Even Application
 ===================================================================
 
 ## Install dependencies
-Clone repo into local machine
-have node 10.8 or greater installed
-have yarn installed
+1. Clone repo into local machine
+2. have node 10.8 or greater installed
+3. have yarn installed
 
 #### Install and Start Application
 2. `cd to app-root-directory`
