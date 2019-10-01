@@ -85,19 +85,19 @@ pipeline {
       post {
         failure {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
         success {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
         aborted {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
@@ -171,13 +171,13 @@ pipeline {
               writeJSON file: 'package.json', json: PACKAGE_JSON, pretty: 2
             }
             withCredentials([usernamePassword(credentialsId: 'gitHubLogin', passwordVariable: "${GITHUB_PWD}", usernameVariable: "${GITHUB_USER_2}")]) {
-                sh 'git config --global user.email lbrevetti@lucera.com'
+                sh 'git config --global user.email lbrevetti@evenfinancial.com'
                 sh 'git config --global user.name lbrevetti'
                 sh "git add package.json"
                 sh "git commit -m \"chore(${APP_NAME}): updating verison of app to ${UPDATED_VERSION}\""
-                sh "git push https://${GITHUB_USER_2}:${GITHUB_PWD}@github.com/luceracloud/${APP_NAME}"
+                sh "git push https://${GITHUB_USER_2}:${GITHUB_PWD}@github.com/evenfinancialcloud/${APP_NAME}"
                 sh "git tag ${APP_VERSION} --force"
-                sh "git push https://${GITHUB_USER_2}:${GITHUB_PWD}@github.com/luceracloud/${APP_NAME} --tags"
+                sh "git push https://${GITHUB_USER_2}:${GITHUB_PWD}@github.com/evenfinancialcloud/${APP_NAME} --tags"
             }
 
           }
@@ -190,19 +190,19 @@ pipeline {
       post{
         failure {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
         success {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
         aborted {
           script{
-            slackSend(submitSlackMessage('#lucera-ci-cd',currentBuild.currentResult))
+            slackSend(submitSlackMessage('#evenfinancial-ci-cd',currentBuild.currentResult))
             emailext (submitEmail(currentBuild.currentResult))
           }
         }
@@ -225,7 +225,7 @@ pipeline {
 
 //methods for piplines
 def getEmailList(){
-  return 'frontend@lucera.com,'+emailextrecipients([
+  return 'frontend@evenfinancial.com,'+emailextrecipients([
     [$class: 'DevelopersRecipientProvider'],
     [$class: 'RequesterRecipientProvider'],
     [$class:'CulpritsRecipientProvider']

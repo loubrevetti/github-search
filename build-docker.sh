@@ -5,7 +5,7 @@
 # Configuration
 #=======================================================================================
 IMAGE_NAME="git-repo-search"
-URL_REPO="repo.lucera.com"
+URL_REPO="repo.even.com"
 VERSION="dev"
 PORT="3000"
 
